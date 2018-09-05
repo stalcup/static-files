@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src="match-game.js"></script>
+    <script>
+    function sizeToWindow() {
+      var canvas = document.getElementById("matchgame-canvas");
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", sizeToWindow);
+    </script>
+  </head>
+  <body onload="sizeToWindow()">
+    <style>
+    body {
+      margin: 0;
+    }
+    </style>
+    <canvas id="matchgame-canvas"></canvas>
+  </body>
+</html>
