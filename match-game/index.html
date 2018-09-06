@@ -1,19 +1,15 @@
 <html>
   <head>
-    <script src="match-game.js"></script>
-    <script>
-    function sizeToWindow() {
-      var canvas = document.getElementById("matchgame-canvas");
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", sizeToWindow);
-    </script>
+    <script src="ddm.MatchGame/ddm.MatchGame.nocache.js"></script>
   </head>
-  <body onload="sizeToWindow()">
+  <body>
     <style>
     body {
       margin: 0;
+    }
+    #matchgame-canvas {
+      width: 100%;
+      height: 100%;
     }
     </style>
     <canvas id="matchgame-canvas"></canvas>
