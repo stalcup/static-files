@@ -1,0 +1,492 @@
+<html>
+<head>
+  <style>
+    img {
+      zoom: 5;
+      image-rendering: pixelated;
+      margin-bottom: 3px;
+    }
+    a {
+    	color: lightblue;
+    }
+    div.title div {
+      font-size: 24px;
+      font-weight: bold;
+      background-color: rgb(32,32,32);
+      color: white;
+    }
+    div.title div div.small {
+      font-size: 12px;
+    }
+    div div {
+      display: table-cell;
+      width: 400px;
+      vertical-align: top;
+      padding: 10px;
+    }
+    div.wfc {
+      background-color: rgb(0, 0, 0, 0.05);
+    }
+    span {
+      display: list-item;
+      list-style-type: disc;
+      list-style-position: inside;
+    }
+    body > div:nth-child(even) {
+      background: rgb(0, 0, 128, 0.05);
+    }
+    p {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Wave Function Collapse (WFC) vs Iterative Partial Match (IPM) for procedural content generation.</h1>
+
+  <p>WFC is handy for quickly generating believable levels and other content in games, but it does have some limitations. My new algorithm, IPM, provides a different trade off and succeeds in some areas where WFC does not.</p>
+
+  <h3>WFC advantages:</h3>
+  <ul>
+    <li>100% accurately honors input tiles. ✅</li>
+    <li>Preserves alignment, repeating pattern output looks "correct". ✅</li>
+    <li>Preserves existing navigability of input tiles. ✅</li>
+    <li>Fast for simple tiles. ✅</li>
+    <li>Generates creative combinations and output within the tile constraints. ✅</li>
+  </ul>
+
+  <h3>WFC disadvantages:</h3>
+  <ul>
+    <li>Frequently fails for larger tile sizes. ❌</li>
+    <li>Frequently fails for complex tiles. ❌</li>
+    <li>Frequently fails on large output sizes. ❌</li>
+    <li>Much slower for complex tiles. ❌</li>
+    <li>Tends to overuse the "easy" tiles within complex tile sets, creating boring and repetitive output. ❌</li>
+  </ul>
+
+  <h3>IPM advantages:</h3>
+  <ul>
+    <li>Works with any tile set. ✅</li>
+    <li>Works with any tile size. ✅</li>
+    <li>Works with any output size. ✅</li>
+    <li>Fast for small/simple inputs/outputs. ✅</li>
+    <li>Much faster than WFC for large/complex inputs/outputs. ✅</li>
+    <li>Generates creative combinations and output within the tile constraints. ✅</li>
+    <li>Maintains high pixel variety, tile variety and reasonably high tile match accuracy. ✅</li>
+  </ul>
+
+  <h3>IPM disadvantages:</h3>
+  <ul>
+    <li>Does not 100% match input tiles. ❌</li>
+    <li>Does not preserve alignment, repeating pattern output can look "wrong". ❌</li>
+    <li>Only partially preserves existing navigability of input tiles. ❌</li>
+  </ul>
+
+  <hr>
+
+  <h3>Direct comparisons</h3>
+
+	<div class='title'>
+		<div class='input'>
+			Input Example Images
+		</div>
+		<div class='wfc'>
+		  <a href='https://github.com/mxgmn/WaveFunctionCollapse'>
+			WFC<br>
+			</a>
+			<div class='small'>tested https://github.com/allison-casey/wavefunctioncollapse</div>
+		</div>
+		<div class='ipm'>
+			IPM
+		</div>
+	</div>
+  <div>
+    <div class='input'>
+      <img src='inputs/hamlet.png'>
+      <span>Image hamlet.png</span>
+      <span>Tile size: 3</span>
+      <span>Tile rotations:  all .</span>
+      <span>Output size: 50</span>
+      <span>Input tiles wrap around: false</span>
+      <span>Periodic tiles: false</span>
+      <span>Mirror tiles horizontally: false</span>
+    </div>
+    <div class='wfc'>
+      <img src='testResults/hamlet-1274370218-WFC.png'>
+      <span>Stuck, repetitive and extra slow with complex examples. ❌</span>
+      <span>Succeeded 25/100 times. ❌</span>
+      <span>Average time to get 1 success: 1720ms. ❌</span>
+    </div>
+    <div class='ipm'>
+      <img src='testResults/hamlet-1274370218-IPM.png'>
+      <span>Always succeeds. ✅</span>
+      <span>Run time: 901ms. ✅</span>
+    </div>
+  </div>
+  <div>
+    <div class='input'>
+      <img src='inputs/hamlet8b.png'>
+      <span>Image hamlet8b.png</span>
+      <span>Tile size: 3</span>
+      <span>Tile rotations:  all .</span>
+      <span>Output size: 100</span>
+      <span>Input tiles wrap around: false</span>
+      <span>Periodic tiles: false</span>
+      <span>Mirror tiles horizontally: false</span>
+    </div>
+    <div class='wfc'>
+      <img src='testResults/hamlet8b-670576685-WFC.png'>
+      <span>Stuck, repetitive and extra slow with complex examples. ❌</span>
+      <span>Succeeded 11/100 times. ❌</span>
+      <span>Average time to get 1 success: 40898ms. ❌</span>
+    </div>
+    <div class='ipm'>
+      <img src='testResults/hamlet8b-670576685-IPM.png'>
+      <span>Always succeeds. ✅</span>
+      <span>Run time: 8384ms. ✅</span>
+    </div>
+  </div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Cave.png'>
+			<span>Image Cave.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: false</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Cave-728890494-WFC.png'>
+			<span>Succeeded 33/100 times. ❌</span>
+			<span>Average time to get 1 success: 82ms. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Cave-728890494-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 25ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/3Bricks.png'>
+			<span>Image 3Bricks.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  none .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: false</span>
+			<span>Periodic tiles: true</span>
+			<span>Mirror tiles horizontally: true</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/3Bricks-1051754451-WFC.png'>
+      <span>Consistent alignment looks correct. ✅</span>
+      <span>Succeeded 71/100 times. ❌</span>
+			<span>Average time to get 1 success: 325ms. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/3Bricks-1051754451-IPM.png'>
+      <span>Inconsistent alignment looks wrong. ❌</span>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 288ms. ✅</span>
+			<span>Periodic feature not needed and not supported. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Fabric.png'>
+			<span>Image Fabric.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Fabric-1555093762-WFC.png'>
+			<span>Failed 100/100 times. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Fabric-1555093762-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 35ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Less Rooms.png'>
+			<span>Image Less Rooms.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Less Rooms-1144748369-WFC.png'>
+			<span>Succeeded 97/100 times. ✅</span>
+			<span>Average time to get 1 success: 38ms. ✅</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Less Rooms-1144748369-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 56ms. ❌</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Less Rooms.png'>
+			<span>Image Less Rooms.png</span>
+			<span>Tile size: 4</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Less Rooms-1146743572-WFC.png'>
+			<span>Failed 100/100 times. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Less Rooms-1146743572-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 406ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Maze.png'>
+			<span>Image Maze.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Maze-1174361318-WFC.png'>
+			<span>Succeeded 100/100 times. ✅</span>
+			<span>Average time to get 1 success: 82ms. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Maze-1174361318-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 33ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Skew 2.png'>
+			<span>Image Skew 2.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Skew 2-1160264930-WFC.png'>
+			<span>Succeeded 49/100 times. ❌</span>
+			<span>Average time to get 1 success: 54ms. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Skew 2-1160264930-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 41ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Skew 2.png'>
+			<span>Image Skew 2.png</span>
+			<span>Tile size: 4</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Skew 2-1936628443-WFC.png'>
+			<span>Succeeded 1/100 times. ❌</span>
+			<span>Average time to get 1 success: 4286ms. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Skew 2-1936628443-IPM.png'>
+      <span>Stuck, repetitive and extra slow with large tile sizes. ❌</span>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 214ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Colored City.png'>
+			<span>Image Colored City.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Colored City-1161082381-WFC.png'>
+			<span>Succeeded 76/100 times. ❌</span>
+			<span>Average time to get 1 success: 34ms. ✅</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Colored City-1161082381-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 99ms. ❌</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Platformer.png'>
+			<span>Image Platformer.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  none .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: true</span>
+			<span>Ground: -1</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Platformer-2117255219-WFC.png'>
+			<span>Succeeded 100/100 times. ✅</span>
+			<span>Average time to get 1 success: 36ms. ✅</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Platformer-2117255219-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 66ms. ❌</span>
+			<span>Ground feature not supported. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Simple Knot.png'>
+			<span>Image Simple Knot.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: true</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Simple Knot-186276003-WFC.png'>
+			<span>Succeeded 86/100 times. ❌</span>
+			<span>Average time to get 1 success: 28ms. ✅</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Simple Knot-186276003-IPM.png'>
+      <span>Inconsistent alignment looks wrong. ❌</span>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 33ms. ❌</span>
+			<span>Periodic feature not needed and not supported. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Simple Knot.png'>
+			<span>Image Simple Knot.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Simple Knot-1030870354-WFC.png'>
+			<span>Failed 100/100 times. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Simple Knot-1030870354-IPM.png'>
+      <span>Inconsistent alignment looks wrong. ❌</span>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 36ms. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Water.png'>
+			<span>Image Water.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  none .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: true</span>
+			<span>Mirror tiles horizontally: true</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Water-1323468230-WFC.png'>
+			<span>Succeeded 98/100 times. ✅</span>
+			<span>Average time to get 1 success: 4ms. ✅</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Water-1323468230-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 11ms. ❌</span>
+			<span>Periodic feature not needed and not supported. ✅</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Lake.png'>
+			<span>Image Lake.png</span>
+			<span>Tile size: 3</span>
+			<span>Tile rotations:  all .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: true</span>
+			<span>Periodic tiles: false</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Lake-1327763628-WFC.png'>
+			<span>Succeeded 99/100 times. ✅</span>
+			<span>Average time to get 1 success: 134ms. ✅</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Lake-1327763628-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 179ms. ❌</span>
+		</div>
+	</div>
+	<div>
+		<div class='input'>
+			<img src='inputs/Chess.png'>
+			<span>Image Chess.png</span>
+			<span>Tile size: 2</span>
+			<span>Tile rotations:  none .</span>
+			<span>Output size: 50</span>
+			<span>Input tiles wrap around: false</span>
+			<span>Periodic tiles: true</span>
+			<span>Mirror tiles horizontally: false</span>
+		</div>
+		<div class='wfc'>
+			<img src='testResults/Chess-849460928-WFC.png'>
+			<span>Failed 100/100 times. ❌</span>
+		</div>
+		<div class='ipm'>
+			<img src='testResults/Chess-849460928-IPM.png'>
+			<span>Always succeeds. ✅</span>
+			<span>Run time: 6ms. ✅</span>
+			<span>Periodic feature not needed and not supported. ✅</span>
+		</div>
+	</div>
+
+  <hr>
+	<p>IPM makes possible expansive and rich generation from example images.</p>
+  <img src="hamlet9b.png">
+
+</body>
+</html>
