@@ -41,6 +41,13 @@
     .changed {
       background-color: lightblue;
     }
+    .source {
+      font-weight: bold;
+    }
+    span.image-name {
+      display: block;
+      font-size: 20px;
+    }
   </style>
 </head>
 <body>
@@ -110,14 +117,14 @@
   <div>
     <div class='input'>
       <img src='inputs/hamlet.png'>
-      <span>Image hamlet.png</span>
+      <span class='image-name'>Image hamlet.png</span>
       <span>Tile size: 3</span>
       <span>Tile rotations:  all.</span>
       <span>Output size: 50</span>
       <span>Input tiles wrap around: false</span>
       <span>Periodic tiles: false</span>
       <span>Mirror tiles horizontally: false</span>
-      <span>Source: IPM</span>
+      <span class='source'>Source: IPM</span>
     </div>
     <div class='wfc'>
       <img src='testResults/hamlet-1274370218-WFC.png'>
@@ -134,14 +141,14 @@
   <div>
     <div class='input'>
       <img src='inputs/hamlet8b.png'>
-      <span>Image hamlet8b.png</span>
+      <span class='image-name'>Image hamlet8b.png</span>
       <span>Tile size: 3</span>
       <span>Tile rotations:  all.</span>
       <span>Output size: 100</span>
       <span>Input tiles wrap around: false</span>
       <span>Periodic tiles: false</span>
       <span>Mirror tiles horizontally: false</span>
-      <span>Source: IPM</span>
+      <span class='source'>Source: IPM</span>
     </div>
     <div class='wfc'>
       <img src='testResults/hamlet8b-670576685-WFC.png'>
@@ -158,14 +165,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Cave.png'>
-			<span>Image Cave.png</span>
+			<span class='image-name'>Image Cave.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: false</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Cave-728890494-WFC.png'>
@@ -181,14 +188,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/3Bricks.png'>
-			<span>Image 3Bricks.png</span>
+			<span class='image-name'>Image 3Bricks.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  none.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: false</span>
 			<span>Periodic tiles: true</span>
 			<span>Mirror tiles horizontally: true</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/3Bricks-1051754451-WFC.png'>
@@ -207,14 +214,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Fabric.png'>
-			<span>Image Fabric.png</span>
+			<span class='image-name'>Image Fabric.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Fabric-1555093762-WFC.png'>
@@ -229,14 +236,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Less Rooms.png'>
-			<span>Image Less Rooms.png</span>
+			<span class='image-name'>Image Less Rooms.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Less Rooms-1144748369-WFC.png'>
@@ -252,14 +259,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Less Rooms.png'>
-			<span>Image Less Rooms.png</span>
+			<span class='image-name'>Image Less Rooms.png</span>
 			<span class='changed'>Tile size: 4</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Less Rooms-1146743572-WFC.png'>
@@ -274,14 +281,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Maze.png'>
-			<span>Image Maze.png</span>
+			<span class='image-name'>Image Maze.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Maze-1174361318-WFC.png'>
@@ -297,14 +304,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Skew 2.png'>
-			<span>Image Skew 2.png</span>
+			<span class='image-name'>Image Skew 2.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Skew 2-1160264930-WFC.png'>
@@ -320,14 +327,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Skew 2.png'>
-			<span>Image Skew 2.png</span>
+			<span class='image-name'>Image Skew 2.png</span>
 			<span class='changed'>Tile size: 4</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Skew 2-1936628443-WFC.png'>
@@ -344,14 +351,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Colored City.png'>
-			<span>Image Colored City.png</span>
+			<span class='image-name'>Image Colored City.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Colored City-1161082381-WFC.png'>
@@ -367,7 +374,7 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Platformer.png'>
-			<span>Image Platformer.png</span>
+			<span class='image-name'>Image Platformer.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  none.</span>
 			<span>Output size: 50</span>
@@ -375,7 +382,7 @@
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: true</span>
 			<span>Ground: -1</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Platformer-2117255219-WFC.png'>
@@ -392,14 +399,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Simple Knot.png'>
-			<span>Image Simple Knot.png</span>
+			<span class='image-name'>Image Simple Knot.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: true</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Simple Knot-186276003-WFC.png'>
@@ -417,14 +424,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Simple Knot.png'>
-			<span>Image Simple Knot.png</span>
+			<span class='image-name'>Image Simple Knot.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span class='changed'>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Simple Knot-1030870354-WFC.png'>
@@ -440,14 +447,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Water.png'>
-			<span>Image Water.png</span>
+			<span class='image-name'>Image Water.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  none.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: true</span>
 			<span>Mirror tiles horizontally: true</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Water-1323468230-WFC.png'>
@@ -464,14 +471,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Lake.png'>
-			<span>Image Lake.png</span>
+			<span class='image-name'>Image Lake.png</span>
 			<span>Tile size: 3</span>
 			<span>Tile rotations:  all.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: true</span>
 			<span>Periodic tiles: false</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Lake-1327763628-WFC.png'>
@@ -487,14 +494,14 @@
 	<div>
 		<div class='input'>
 			<img src='inputs/Chess.png'>
-			<span>Image Chess.png</span>
+			<span class='image-name'>Image Chess.png</span>
 			<span>Tile size: 2</span>
 			<span>Tile rotations:  none.</span>
 			<span>Output size: 50</span>
 			<span>Input tiles wrap around: false</span>
 			<span>Periodic tiles: true</span>
 			<span>Mirror tiles horizontally: false</span>
-      <span>Source: WFC Samples</span>
+      <span class='source'>Source: WFC Samples</span>
     </div>
     <div class='wfc'>
 			<img src='testResults/Chess-849460928-WFC.png'>
