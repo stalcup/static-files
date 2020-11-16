@@ -55,15 +55,23 @@
 
   <h1>Iterative Partial Match (IPM) vs Wave Function Collapse (WFC) for procedural content generation.</h1>
 
-  <p>WFC is handy for quickly generating believable levels and other content in games, but it does have some limitations. My new algorithm, IPM, provides a different trade off and succeeds in some areas where WFC does not.</p>
+  <p>WFC is handy for quickly generating believable levels and other content in games, but it does have some limitations.
+  My new algorithm, IPM, provides a different trade off and succeeds in some areas where WFC does not.</p>
 
-  <p>Generally speaking. WFC output looks "clean" and IPM output looks "organic". That can be good or bad depending on the situation.
+  <p>Generally speaking. WFC output looks "clean" and IPM output looks "organic". That can be good or bad depending on the
+  situation.</p>
+
+  <p>On hard tile sets (which are hard either because there are many tiles, few legal ways for tiles to match
+  eachother or because tiles are very large) WFC frequently failes to generate any output or will generate output that
+  is repetitive (because it can only make legal matches of a small subset of the difficult tiles). So for these difficult
+  situations WFC is slower, may not work at all, or the output may be unusable.</p>
 
   <h3>WFC advantages:</h3>
   <ul>
     <li>100% accurately honors input tiles. ✅</li>
     <li>Preserves alignment, repeating pattern output looks "correct". ✅</li>
     <li>Preserves existing navigability of input tiles. ✅</li>
+    <li>Preserves tile edge matches, allowing "chunky" tile artifacts in game to mesh properly. ✅</li>
     <li>Fast for simple tiles. ✅</li>
     <li>Generates creative combinations and output within the tile constraints. ✅</li>
   </ul>
@@ -74,7 +82,7 @@
     <li>Frequently fails for complex tiles. ❌</li>
     <li>Frequently fails on large output sizes. ❌</li>
     <li>Much slower for complex tiles. ❌</li>
-    <li>Tends to overuse the "easy" tiles within complex tile sets, creating boring and repetitive output. ❌</li>
+    <li>Tends to overuse the "easy" tiles within complex tile sets, creating repetitive output. ❌</li>
   </ul>
 
   <h3>IPM advantages:</h3>
@@ -93,6 +101,7 @@
     <li>Does not 100% match input tiles. ❌</li>
     <li>Does not preserve alignment, repeating pattern output can look "wrong". ❌</li>
     <li>Only partially preserves existing navigability of input tiles. ❌</li>
+    <li>Does not preserves tile edge matches, "chunky" tile artifacts in game will frequently not mesh properly. ❌</li>
   </ul>
 
   <hr>
@@ -129,14 +138,15 @@
     </div>
     <div class='wfc'>
       <img src='testResults/hamlet-1274370218-WFC.png'>
-      <span>Average time to get 1 success: 1720ms. ❌</span>
-      <span>Stuck, repetitive and slow with complex examples. ❌</span>
-      <span>Succeeded 25/100 times. ❌</span>
+      <span>Average time to get 1 finish: 1720ms. ❌</span>
+      <span>Finished 25/100 times. ❌</span>
+      <span>Result is unusable. ❌</span>
     </div>
     <div class='ipm'>
       <img src='testResults/hamlet-1274370218-IPM.png'>
       <span>Run time: 901ms. ✅</span>
-      <span>Always succeeds. ✅</span>
+      <span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
     </div>
   </div>
   <div>
@@ -153,14 +163,15 @@
     </div>
     <div class='wfc'>
       <img src='testResults/hamlet8b-670576685-WFC.png'>
-      <span>Stuck, repetitive and slow with complex examples. ❌</span>
-      <span>Average time to get 1 success: 40898ms. ❌</span>
-      <span>Succeeded 11/100 times. ❌</span>
+      <span>Average time to get 1 finish: 40898ms. ❌</span>
+      <span>Finished 11/100 times. ❌</span>
+      <span>Result is unusable. ❌</span>
     </div>
     <div class='ipm'>
       <img src='testResults/hamlet8b-670576685-IPM.png'>
       <span>Run time: 8384ms. ✅</span>
-      <span>Always succeeds. ✅</span>
+      <span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
     </div>
   </div>
 	<div>
@@ -177,13 +188,15 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Cave-728890494-WFC.png'>
-			<span>Average time to get 1 success: 82ms. ❌</span>
-			<span>Succeeded 33/100 times. ❌</span>
+			<span>Average time to get 1 finish: 82ms. ❌</span>
+			<span>Finished 33/100 times. ❌</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Cave-728890494-IPM.png'>
 			<span>Run time: 25ms. ✅</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -200,16 +213,16 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/3Bricks-1051754451-WFC.png'>
-			<span>Average time to get 1 success: 325ms. ❌</span>
+			<span>Average time to get 1 finish: 325ms. ❌</span>
+      <span>Finished 71/100 times. ❌</span>
       <span>Consistent alignment looks correct. ✅</span>
-      <span>Succeeded 71/100 times. ❌</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/3Bricks-1051754451-IPM.png'>
 			<span>Run time: 288ms. ✅</span>
-      <span>Inconsistent alignment looks wrong. ❌</span>
-			<span>Always succeeds. ✅</span>
-			<span>Periodic feature not needed and not supported. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is unusable. ❌</span>
 		</div>
 	</div>
 	<div>
@@ -226,12 +239,13 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Fabric-1555093762-WFC.png'>
-			<span>Failed 100/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Fabric-1555093762-IPM.png'>
 			<span>Run time: 35ms. ✅</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Maybe usable result, depends on your intention. �</span>
 		</div>
 	</div>
 	<div>
@@ -248,13 +262,15 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Less Rooms-1144748369-WFC.png'>
-			<span>Average time to get 1 success: 38ms. ✅</span>
-			<span>Succeeded 97/100 times. ✅</span>
+			<span>Average time to get 1 finish: 38ms. ✅</span>
+			<span>Finished 97/100 times. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Less Rooms-1144748369-IPM.png'>
 			<span>Run time: 56ms. ❌</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -271,12 +287,13 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Less Rooms-1146743572-WFC.png'>
-			<span>Failed 100/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Less Rooms-1146743572-IPM.png'>
 			<span>Run time: 406ms. ✅</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -293,13 +310,15 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Maze-1174361318-WFC.png'>
-			<span>Average time to get 1 success: 82ms. ❌</span>
-			<span>Succeeded 100/100 times. ✅</span>
+			<span>Average time to get 1 finish 82ms. ❌</span>
+			<span>Finished 100/100 times. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Maze-1174361318-IPM.png'>
 			<span>Run time: 33ms. ✅</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -316,13 +335,15 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Skew 2-1160264930-WFC.png'>
-			<span>Average time to get 1 success: 54ms. ❌</span>
-			<span>Succeeded 49/100 times. ❌</span>
+			<span>Average time to get 1 finish 54ms. ❌</span>
+			<span>Finished 49/100 times. ❌</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Skew 2-1160264930-IPM.png'>
 			<span>Run time: 41ms. ✅</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -339,14 +360,15 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Skew 2-1936628443-WFC.png'>
-			<span>Average time to get 1 success: 4286ms. ❌</span>
-			<span>Succeeded 1/100 times. ❌</span>
+			<span>Average time to get 1 finish 4286ms. ❌</span>
+			<span>Finished 1/100 times. ❌</span>
+      <span>Maybe usable result, depends on your intention. �</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Skew 2-1936628443-IPM.png'>
-      <span>Stuck, repetitive and extra slow with large tile sizes. ❌</span>
 			<span>Run time: 214ms. ✅</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -363,13 +385,15 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Colored City-1161082381-WFC.png'>
-			<span>Average time to get 1 success: 34ms. ✅</span>
-			<span>Succeeded 76/100 times. ❌</span>
+			<span>Average time to get 1 finish 34ms. ✅</span>
+			<span>Finished 76/100 times. ❌</span>
+      <span>Result is useable (a bit too simplistic to me). ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Colored City-1161082381-IPM.png'>
 			<span>Run time: 99ms. ❌</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Maybe usable result, depends on your intention. �</span>
 		</div>
 	</div>
 	<div>
@@ -387,14 +411,15 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Platformer-2117255219-WFC.png'>
-			<span>Average time to get 1 success: 36ms. ✅</span>
-			<span>Succeeded 100/100 times. ✅</span>
+			<span>Average time to get 1 finish 36ms. ✅</span>
+			<span>Finished 100/100 times. ✅</span>
+      <span>Result is useable (a bit too simplistic to me). ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Platformer-2117255219-IPM.png'>
 			<span>Run time: 66ms. ❌</span>
-			<span>Always succeeds. ✅</span>
-			<span>Ground feature not supported. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -411,15 +436,15 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Simple Knot-186276003-WFC.png'>
-			<span>Average time to get 1 success: 28ms. ✅</span>
-			<span>Succeeded 86/100 times. ❌</span>
+			<span>Average time to get 1 finish 28ms. ✅</span>
+			<span>Finished 86/100 times. ❌</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Simple Knot-186276003-IPM.png'>
-      <span>Inconsistent alignment looks wrong. ❌</span>
 			<span>Run time: 33ms. ❌</span>
-			<span>Always succeeds. ✅</span>
-			<span>Periodic feature not needed and not supported. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Maybe usable result, depends on your intention. �</span>
 		</div>
 	</div>
 	<div>
@@ -436,13 +461,13 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Simple Knot-1030870354-WFC.png'>
-			<span>Failed 100/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Simple Knot-1030870354-IPM.png'>
 			<span>Run time: 36ms. ✅</span>
-      <span>Inconsistent alignment looks wrong. ❌</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Maybe usable result, depends on your intention. �</span>
 		</div>
 	</div>
 	<div>
@@ -459,14 +484,15 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Water-1323468230-WFC.png'>
-			<span>Average time to get 1 success: 4ms. ✅</span>
-			<span>Succeeded 98/100 times. ✅</span>
+			<span>Average time to get 1 finish 4ms. ✅</span>
+			<span>Finished 98/100 times. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Water-1323468230-IPM.png'>
 			<span>Run time: 11ms. ❌</span>
-			<span>Always succeeds. ✅</span>
-			<span>Periodic feature not needed and not supported. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -483,13 +509,15 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Lake-1327763628-WFC.png'>
-			<span>Average time to get 1 success: 134ms. ✅</span>
-			<span>Succeeded 99/100 times. ✅</span>
+			<span>Average time to get 1 finish 134ms. ✅</span>
+			<span>Finished 99/100 times. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Lake-1327763628-IPM.png'>
 			<span>Run time: 179ms. ❌</span>
-			<span>Always succeeds. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 	<div>
@@ -506,13 +534,13 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Chess-849460928-WFC.png'>
-			<span>Failed 100/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌</span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Chess-849460928-IPM.png'>
 			<span>Run time: 6ms. ✅</span>
-			<span>Always succeeds. ✅</span>
-			<span>Periodic feature not needed and not supported. ✅</span>
+			<span>Always finishes. ✅</span>
+      <span>Result is useable. ✅</span>
 		</div>
 	</div>
 
