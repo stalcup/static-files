@@ -18,6 +18,22 @@
     div.title div div.small {
       font-size: 12px;
     }
+    h2.warning {
+      font-family: arial;
+      background-color: rgb(255, 128, 128);
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .small-warning {
+      font-family: arial;
+      font-weight: bold;
+      font-size: 12px;
+      background-color: rgb(255, 128, 128);
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+    }
     div div {
       display: table-cell;
       width: 400px;
@@ -49,11 +65,16 @@
       font-size: 20px;
     }
   </style>
-  <title>Iterative Partial Match (IPM) vs Wave Function Collapse (WFC) for procedural content generation.</title>
+  <title>Iterative Partial Match (IPM) vs Wave Function Collapse (WFC, testing 1 specific Java port) for procedural content generation.</title>
 </head>
 <body>
 
   <h1>Iterative Partial Match (IPM) vs Wave Function Collapse (WFC) for procedural content generation.</h1>
+
+  <h2 class='warning'>WARNING: It has come to my attention that the particular implementation of WFC that
+  I tested seems to have some issues. In particular it sometimes does not finish where other implementation do
+  finish, and it may also as a result have slower runtime per completion. I need to redo this entire comparison
+  in a follow-up post.</h2>
 
   <p>WFC is handy for quickly generating believable levels and other content in games, but it does have some limitations.
   My new algorithm, IPM, provides a different trade off and succeeds in some areas where WFC does not.</p>
@@ -76,7 +97,7 @@
     <li>Generates creative combinations and output within the tile constraints. ✅</li>
   </ul>
 
-  <h3>WFC disadvantages:</h3>
+  <h3>WFC disadvantages <small class='small-warning'>(take with a grain of salt, need to retest with official implementation)</small>:</h3>
   <ul>
     <li>Frequently fails for larger tile sizes. ❌</li>
     <li>Frequently fails for complex tiles. ❌</li>
@@ -106,7 +127,7 @@
 
   <hr>
 
-  <h3>Direct comparisons</h3>
+  <h3>Direct comparisons <small class='small-warning'>(take with a grain of salt, need to retest with official implementation)</small></h3>
 
   <p>I'm providing 17 comparisons. 15 are from WFC's samples and 2 are from IPM and try to represent complex world generation.
 
@@ -118,7 +139,7 @@
 		  <a href='https://github.com/mxgmn/WaveFunctionCollapse'>
 			WFC<br>
 			</a>
-			<div class='small'>tested https://github.com/allison-casey/wavefunctioncollapse</div>
+			<div class='small'>tested https://github.com/allison-casey/wavefunctioncollapse </div>
 		</div>
 		<div class='ipm'>
 			IPM
@@ -239,7 +260,7 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Fabric-1555093762-WFC.png'>
-			<span>Finished 0/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌ <small class='small-warning'>(the official implementation actually works, i need to retest all of this)</small></span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Fabric-1555093762-IPM.png'>
@@ -287,7 +308,7 @@
 		</div>
 		<div class='wfc'>
 			<img src='testResults/Less Rooms-1146743572-WFC.png'>
-			<span>Finished 0/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌ <small class='small-warning'>(take with a grain of salt, need to retest with official implementation)</small></span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Less Rooms-1146743572-IPM.png'>
@@ -461,7 +482,7 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Simple Knot-1030870354-WFC.png'>
-			<span>Finished 0/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌ <small class='small-warning'>(the official implementation actually works, i need to retest all of this)</small></span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Simple Knot-1030870354-IPM.png'>
@@ -534,7 +555,7 @@
     </div>
     <div class='wfc'>
 			<img src='testResults/Chess-849460928-WFC.png'>
-			<span>Finished 0/100 times. ❌</span>
+			<span>Finished 0/100 times. ❌ <small class='small-warning'>(the official implementation actually works, i need to retest all of this)</small></span>
 		</div>
 		<div class='ipm'>
 			<img src='testResults/Chess-849460928-IPM.png'>
